@@ -10,4 +10,17 @@
 		values (#{title},#{content},#{writer})
 	</insert>
 
+	<!-- DB에서 데이터를 꺼낼때 LIST형식으로 꺼낼 수 없고 컬럼단위를 VO로 꺼낼 수 있다  -->
+	<!-- 실무에선 where bno>0 가 문제가 될 수 있다. Mapper는 xml형식으로 부등호를 닫는 태그로 인식할 수도 있다. <![CDATA[]]>를 이용한다
+	CDATA위치는 상관없다. 범용적으로 쿼리전체를 묶기도하고 에러발생부분만(where bno>0)을 묶기도 한다-->
+	<!-- resultType="com.itwillbs.domain.BoardVO"을 자주쓸텐데 매번 반복해야한다 > Mybatis-config.xml를 입력한다 
+	<select id="listAll" resultType="com.itwillbs.domain.BoardVO" >
+	-->
+	<select id="listAll" resultType="BoardVO" >
+		<![CDATA[
+		select * from tbl_board
+		where bno > 0
+		order by bno desc, regdate desc
+		]]>
+	</select>
 </mapper>

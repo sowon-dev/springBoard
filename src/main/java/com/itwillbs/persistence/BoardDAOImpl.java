@@ -1,5 +1,7 @@
 package com.itwillbs.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -20,7 +22,16 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void create(BoardVO vo) throws Exception {
 		session.insert(namespace+".create", vo);
-		System.out.println("DAO 글쓰기메서드");
+		System.out.println("DAO: 글쓰기메서드");
 	}
+
+	//글 전체 목록
+	@Override
+	public List<BoardVO> listAll() throws Exception {
+		System.out.println("DAO: 글전체목록 메서드");
+		//sqlSession 객체 사용하여 Mapper 호출	
+		return session.selectList(namespace+".listAll");
+	}
+	
 	
 }

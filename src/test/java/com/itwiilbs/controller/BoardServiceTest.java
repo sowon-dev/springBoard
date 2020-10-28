@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -13,11 +14,15 @@ import com.itwillbs.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-public class BoardDAOTest {
+public class BoardServiceTest {
 	
 	//DB객체
 	@Inject
 	private BoardDAO bdao;
+	
+	//서비스객체
+	@Inject
+	private BoardService bService;
 	
 	@Test
 	public void testDAO() throws Exception{
@@ -25,13 +30,13 @@ public class BoardDAOTest {
 	}
 	
 	@Test
-	public void testInsertBoard() throws Exception{
+	public void testServiceRegist() throws Exception{
 		BoardVO vo = new BoardVO();
 		vo.setTitle("공지사항");
-		vo.setContent("공지안내입니다. 테스트입니다.");
+		vo.setContent("서비스테스트입니다.");
 		vo.setWriter("관리자");
 		
-		bdao.create(vo);
-		System.out.println("T: 글쓰기메서드 "+vo);
+		bService.regist(vo);
+		System.out.println("T: 서비스regist메서드 "+vo);
 	}
 }
