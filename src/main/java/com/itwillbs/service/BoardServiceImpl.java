@@ -29,6 +29,15 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("S: listAll메서드 ");
 		return boardList;
 	}
+
+	//글번호에 해당하는 게시글 상세 보기
+	@Override
+	public BoardVO readContent(Integer bno) throws Exception {
+		BoardVO bvo = bdao.readContent(bno);
+		return bvo;
+	}
+	
+	
 	
 	
 }

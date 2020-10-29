@@ -315,11 +315,11 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-dashboard"></i> <span>대시보드</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="${pageContext.request.contextPath}/resources/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="${pageContext.request.contextPath}/resources/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="/board/register"><i class="fa fa-circle-o"></i> 글쓰기</a></li>
+                <li><a href="/board/listAll"><i class="fa fa-circle-o"></i> 글 전체 목록</a></li>
               </ul>
             </li>
             <li class="treeview">

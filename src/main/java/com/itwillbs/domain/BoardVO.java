@@ -1,6 +1,6 @@
 package com.itwillbs.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class BoardVO {
 
@@ -8,14 +8,14 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private String writer;
-	private Date regdate;
+	private Timestamp regdate;
 	private int viewcnt;
 	
 	//bno는 경우 캐스팅을 해야하기때문에 integer로 데이터타입을 변경한다.
 	
 	public BoardVO() {}
 	
-	public BoardVO(Integer bno, String title, String content, String writer, Date regdate, int viewcnt) {
+	public BoardVO(Integer bno, String title, String content, String writer, Timestamp regdate, int viewcnt) {
 		super();
 		this.bno = bno;
 		this.title = title;
@@ -57,11 +57,11 @@ public class BoardVO {
 		this.writer = writer;
 	}
 
-	public Date getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 
