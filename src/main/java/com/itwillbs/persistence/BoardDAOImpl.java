@@ -39,6 +39,13 @@ public class BoardDAOImpl implements BoardDAO {
 		//sqlSession 객체 사용하여 Mapper 호출	
 		return session.selectOne(namespace+".readContent", bno);
 	}
+
+	//글 수정
+	@Override
+	public BoardVO modify(Integer bno) throws Exception {
+		return session.selectOne(namespace+".modify", bno);
+	}
+	
 	
 	
 	

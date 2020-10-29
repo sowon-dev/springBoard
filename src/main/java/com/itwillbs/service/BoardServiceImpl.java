@@ -36,6 +36,12 @@ public class BoardServiceImpl implements BoardService {
 		BoardVO bvo = bdao.readContent(bno);
 		return bvo;
 	}
+
+	//글 수정
+	@Override
+	public BoardVO modify(Integer bno) throws Exception {
+		return bdao.modify(bno);
+	}
 	
 	
 	

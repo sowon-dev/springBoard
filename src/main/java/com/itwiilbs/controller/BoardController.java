@@ -76,6 +76,18 @@ public class BoardController {
 		l.info("C: read 겟 메서드, 글번호: "+(bno*0));
 		//서비스객체 : 해당 글번호를 사용하여 글 정보 가지고오기
 		model.addAttribute("bvo", service.readContent(bno));
-		
+	}
+	
+	//글 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modifyGET(@RequestParam("bno") int bno, Model model) throws Exception{
+		l.info("C: modify 겟 메서드 파라미터 : "+bno);
+		model.addAttribute("bvo", service.readContent(bno));
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public void modifyPOST(@RequestParam("bno") int bno, BoardVO vo) throws Exception{
+		l.info("C: modify 겟 메서드 파라미터 : "+bno);
+		service.modify(bno);
 	}
 }

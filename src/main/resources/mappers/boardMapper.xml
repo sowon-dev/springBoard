@@ -28,4 +28,10 @@
 		select * from tbl_board
 		where bno =#{bno}
 	</select>
+	
+	<update id="modify">
+		update tbl_board 
+		set title=#{title}, content=#{content}
+		where bno=#{bno} 
+	</update>	
 </mapper>

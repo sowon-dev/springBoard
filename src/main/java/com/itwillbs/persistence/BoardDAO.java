@@ -13,4 +13,7 @@ public interface BoardDAO {
 	
 	//글번호에 해당하는 게시글 상세 보기
 	public BoardVO readContent(Integer bno) throws Exception;
+	
+	//글수정
+	public BoardVO modify(Integer bno) throws Exception;
 }
