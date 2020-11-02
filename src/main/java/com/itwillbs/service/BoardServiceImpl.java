@@ -39,11 +39,14 @@ public class BoardServiceImpl implements BoardService {
 
 	//글 수정
 	@Override
-	public BoardVO modify(Integer bno) throws Exception {
-		return bdao.modify(bno);
+	public void modify(BoardVO vo) throws Exception {
+		bdao.modify(vo);
 	}
-	
-	
-	
+
+	//글 삭제
+	@Override
+	public void remove(Integer bno) throws Exception {
+		bdao.delete(bno);
+	}
 	
 }

@@ -42,9 +42,18 @@ public class BoardDAOImpl implements BoardDAO {
 
 	//글 수정
 	@Override
-	public BoardVO modify(Integer bno) throws Exception {
-		return session.selectOne(namespace+".modify", bno);
+	public void modify(BoardVO vo) throws Exception {
+		System.out.println("DAO: bno는?"+vo.getBno());
+		session.update(namespace+".modify", vo);
 	}
+
+	//글 삭제
+	@Override
+	public void delete(Integer bno) throws Exception {
+		session.delete(namespace+".delete", bno);
+	}
+	
+	
 	
 	
 	

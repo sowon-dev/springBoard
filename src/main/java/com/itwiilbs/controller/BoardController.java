@@ -1,5 +1,6 @@
 package com.itwiilbs.controller;
 
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
@@ -19,6 +21,7 @@ import com.itwillbs.service.BoardService;
 
 @Controller
 @RequestMapping("/board/*")
+//@SessionAttributes() : 컨트롤러의 정보를 저장하는 어노테이션
 public class BoardController {
 	private static final Logger l = LoggerFactory.getLogger(BoardController.class);
 	
@@ -86,8 +89,23 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public void modifyPOST(@RequestParam("bno") int bno, BoardVO vo) throws Exception{
-		l.info("C: modify 겟 메서드 파라미터 : "+bno);
-		service.modify(bno);
+	public String modifyPOST(BoardVO vo,RedirectAttributes rttr) throws Exception{
+		l.info("C: modify 포스트 메서드 파라미터 : "+vo);
+		service.modify(vo);
+		rttr.addFlashAttribute("result", "up-ok");
+		return "redirect:/board/listAll";
+	}
+	
+	//글삭제
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String removePOST(@RequestParam("bno") int bno,RedirectAttributes rttr) throws Exception{
+		l.info("C: remove 포스트 메서드");
+		// 글번호 저장
+		// 서비스객체 사용하여 글 삭제
+		service.remove(bno);
+		// 삭제정보 저장해서 이동
+		// 글삭제 후 얼럿창 -> 글목록으로 페이지 이동
+		rttr.addFlashAttribute("result", "delete-ok");
+		return "redirect:/board/listAll";
 	}
 }

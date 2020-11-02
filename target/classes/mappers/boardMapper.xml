@@ -26,12 +26,17 @@
 	
 	<select id="readContent" resultType="BoardVO">
 		select * from tbl_board
-		where bno =#{bno}
+		where bno=#{bno}
 	</select>
 	
 	<update id="modify">
 		update tbl_board 
-		set title=#{title}, content=#{content}
+		set title=#{title},content=#{content}
 		where bno=#{bno} 
-	</update>	
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_board
+		where bno=#{bno}
+	</delete>
 </mapper>

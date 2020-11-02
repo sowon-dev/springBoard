@@ -16,6 +16,9 @@ public interface BoardService {
 	public BoardVO readContent(Integer bno) throws Exception;
 	
 	//글 수정
-	public BoardVO modify(Integer bno) throws Exception;
+	public void modify(BoardVO vo) throws Exception;
+	
+	//글 삭제
+	public void remove(Integer bno) throws Exception;
 	
 }

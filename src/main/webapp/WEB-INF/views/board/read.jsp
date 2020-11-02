@@ -38,11 +38,11 @@
 				  </div>
 				  <div class="form-group">
 				     <label for="exampleInputEmail">제목</label>
-				     <input type="text" name="title" class="form-control" value="${bvo.title}">				     			   
+				     <input type="text" name="title" class="form-control" value="${bvo.title}" readonly>				     			   
 				  </div>
 				   <div class="form-group">
 				     <label for="exampleInputEmail">내용</label>
-				     <textarea name="content" rows="5" class="form-control">${bvo.content}</textarea>			   
+				     <textarea name="content" rows="5" class="form-control" readonly>${bvo.content}</textarea>			   
 				   </div>
 				 </div>
 				 <div class="box-footer">
@@ -88,6 +88,11 @@ $(document).ready(function(){
 			action: "/board/modify",
 			method: "get",
 			}).submit();
+	});
+
+	//삭제버튼 클릭시
+	$(".btn-danger").click(function(){
+		formObj.attr("action","/board/remove").submit();
 	});
 	
 })//end of jQuery

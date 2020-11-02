@@ -15,5 +15,8 @@ public interface BoardDAO {
 	public BoardVO readContent(Integer bno) throws Exception;
 	
 	//글수정
-	public BoardVO modify(Integer bno) throws Exception;
+	public void modify(BoardVO vo) throws Exception;
+	
+	//글삭제
+	public void delete(Integer bno) throws Exception;
 }

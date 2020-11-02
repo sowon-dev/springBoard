@@ -12,7 +12,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">게시판 글 조희</h3>
+					<h3 class="box-title">게시판 글 조회</h3>
 				</div>
 				<!-- /.box-header -->
 				
@@ -64,6 +64,10 @@
 		alert('성공적으로 글 작성되었습니다.');
 	}else if(result == 'success' && isResist != 'true'){
 		alert('글쓰기가 실패하였습니다.');
+	}else if(result =='up-ok'){
+		alert('성공적으로 글이 수정되었습니다.');
+	}else if(result =='delete-ok'){
+		alert('성공적으로 글이 삭제되었습니다.');
 	}else{
 		//글쓰기없이 출력시 alert창 필요없음
 	}
