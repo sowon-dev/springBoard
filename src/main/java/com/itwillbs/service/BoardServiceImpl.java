@@ -49,4 +49,6 @@ public class BoardServiceImpl implements BoardService {
 		bdao.delete(bno);
 	}
 	
+	
+	
 }

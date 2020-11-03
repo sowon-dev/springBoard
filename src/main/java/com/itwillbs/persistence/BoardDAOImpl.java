@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -52,11 +53,26 @@ public class BoardDAOImpl implements BoardDAO {
 	public void delete(Integer bno) throws Exception {
 		session.delete(namespace+".delete", bno);
 	}
+
+	//페이징
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		//페이지가 0인 경우 1로 바꿔서 처리
+		if(page <= 0) {
+			page = 1;
+		}
+		page = (page - 1)*10;
+		return session.selectList(namespace+".listPage", page);
+	}
 	
+	//페이징 처리하는 동작(Criteria 객체 사용)
+	@Override
+	public List<BoardVO> listPageCri(Criteria cri) throws Exception {
+		System.out.println("DAO: listPageCri 호출");
+		return session.selectList(namespace+".listPageCri", cri);
+	}
 	
-	
-	
-	
+
 	
 	
 }

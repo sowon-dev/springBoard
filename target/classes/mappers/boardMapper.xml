@@ -39,4 +39,23 @@
 		delete from tbl_board
 		where bno=#{bno}
 	</delete>
+	
+	<!-- 페이지정보를 10개씩 가져오기 -->
+	<select id="listPage" resultType="BoardVO">
+		select * 
+		from tbl_board
+		order by bno desc, regdate desc
+		limit #{page},10
+	</select>
+
+	<!-- 페이지정보를 지정한 크기만큼 가져오기 -->
+	<select id="listPageCri" resultType="BoardVO">
+		select * 
+		from tbl_board
+		order by bno desc, regdate desc
+		limit #{pageStart},#{pageSize}
+	</select>
+	
+	
+	
 </mapper>

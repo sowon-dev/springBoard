@@ -21,4 +21,6 @@ public interface BoardService {
 	//글 삭제
 	public void remove(Integer bno) throws Exception;
 	
+	
+	
 }
