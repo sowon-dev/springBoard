@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 import com.itwillbs.persistence.BoardDAO;
 
 @Service
@@ -48,6 +49,13 @@ public class BoardServiceImpl implements BoardService {
 	public void remove(Integer bno) throws Exception {
 		bdao.delete(bno);
 	}
+
+	//페이지처리한 글 목록
+	@Override
+	public List<BoardVO> listCri(Criteria cri) throws Exception {
+		return bdao.listPageCri(cri);
+	}
+	
 	
 	
 	

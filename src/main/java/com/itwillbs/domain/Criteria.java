@@ -38,7 +38,7 @@ public class Criteria {
 	//멤버변수가 아니지만 gettet와 setter를 생성하면 Mapper에서 접근가능하다.
 	//Mapper에서 사용하는 법 #{pageStart}
 	public int getPageStart() {
-		return (this.page - 1)*10;
+		return (this.page - 1)*this.pageSize;
 	}
 	
 	//toString()

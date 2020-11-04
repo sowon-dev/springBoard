@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 import com.itwillbs.service.BoardService;
 
 @Controller
@@ -106,4 +107,14 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "delete-ok");
 		return "redirect:/board/listAll";
 	}
+	
+	//페이징처리한 글목록
+	//http://localhost:8088/board/listCri
+	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
+	public void listCriGET(Criteria cri, Model model) throws Exception{
+		l.info("C: listCri 겟 호출" + cri);
+		model.addAttribute("boardList", service.listCri(cri));
+	}
+	
+	
 }
