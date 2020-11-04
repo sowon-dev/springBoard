@@ -55,6 +55,13 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> listCri(Criteria cri) throws Exception {
 		return bdao.listPageCri(cri);
 	}
+
+	//DB 테이블에 있는 모든 글 개수 계산 후 리턴
+	@Override
+	public int pageCount() throws Exception {
+		return bdao.pageCount();
+	}
+	
 	
 	
 	

@@ -25,6 +25,7 @@ public interface BoardService {
 	//페이징처리한 글목록
 	public List<BoardVO> listCri(Criteria cri) throws Exception;
 	
-	
+	//DB 테이블에 있는 모든 글 개수 계산 후 리턴
+	public int pageCount() throws Exception;
 	
 }

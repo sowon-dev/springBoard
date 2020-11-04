@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
 import com.itwillbs.domain.Criteria;
+import com.itwillbs.domain.PageMaker;
 import com.itwillbs.service.BoardService;
 
 @Controller
@@ -116,5 +117,19 @@ public class BoardController {
 		model.addAttribute("boardList", service.listCri(cri));
 	}
 	
+	//글목록보기(PageMaker객체 사용)
+	// http://localhost:8088/board/listPage
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public void listPageGET(Criteria cri, Model model) throws Exception{
+		l.info("C: cri는 "+cri);
+		model.addAttribute("boardList", service.listCri(cri));
+		
+		PageMaker pm = new PageMaker();
+		pm.setCri(cri);
+		pm.setTotalCount(service.pageCount()); //DB의 전체ROW수 입력
+		
+		// 뷰페이지로 전달 
+		model.addAttribute("pm", pm);
+	}
 	
 }

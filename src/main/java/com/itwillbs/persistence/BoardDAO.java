@@ -26,4 +26,7 @@ public interface BoardDAO {
 	
 	//페이징 처리하는 동작(Criteria 객체 사용)
 	public List<BoardVO> listPageCri(Criteria cri) throws Exception;
+	
+	//DB 테이블에 있는 모든 글 개수 계산 후 리턴
+	public int pageCount() throws Exception;
 }

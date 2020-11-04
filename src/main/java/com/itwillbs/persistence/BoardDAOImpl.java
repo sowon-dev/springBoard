@@ -71,6 +71,12 @@ public class BoardDAOImpl implements BoardDAO {
 		System.out.println("DAO: listPageCri 호출");
 		return session.selectList(namespace+".listPageCri", cri);
 	}
+
+	//DB 테이블에 있는 모든 글 개수 계산 후 리턴
+	@Override
+	public int pageCount() throws Exception{
+		return session.selectOne(namespace+".pageCount");
+	}
 	
 
 	

@@ -56,6 +56,9 @@
 		limit #{pageStart},#{pageSize}
 	</select>
 	
+	<select id="pageCount" resultType="int">
+		select count(*) from tbl_board
+	</select>
 	
 	
 </mapper>
