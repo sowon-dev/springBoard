@@ -31,7 +31,7 @@
 				 		<tr>
 				 			<td>${i.bno }</td>
 				 			<td>${i.writer }</td>
-				 			<td><a href="/board/read?bno=${i.bno }">${i.title }</a></td>
+				 			<td><a href="/board/readPage?bno=${i.bno }&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">${i.title }</a></td>
 				 			<td>${i.content }</td>
 				 			<td><fmt:formatDate value="${i.regdate }" pattern="yyyy-MM-dd (E) HH:mm" /></td>
 				 			<td><span class="badge bg-red">${i.viewcnt }</span></td>

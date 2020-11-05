@@ -81,6 +81,15 @@ public class BoardController {
 		model.addAttribute("bvo", service.readContent(bno));
 	}
 	
+	//글번호에 해당하는 게시글 상세 보기(incl Paging)
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public void readPageGET(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{ //0출력
+		l.info("C: readPage 겟 글번호: "+(bno*0));
+		l.info("c: readPage 겟 cri"+cri);
+		//서비스객체 : 해당 글번호를 사용하여 글 정보 가지고오기
+		model.addAttribute("bvo", service.readContent(bno));
+	}
+	
 	//글 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void modifyGET(@RequestParam("bno") int bno, Model model) throws Exception{
@@ -95,6 +104,25 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "up-ok");
 		return "redirect:/board/listAll";
 	}
+
+	//글 수정(incl Paging)
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	public void modifyPageGET(Criteria cri, @RequestParam("bno") int bno, Model model) throws Exception{
+		l.info("C: modifyPage 겟 bno파라미터 : "+bno);
+		model.addAttribute("bvo", service.readContent(bno));
+		model.addAttribute("cri", cri);
+	}
+	
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+	public String modifyPagePOST(Criteria cri, BoardVO vo, RedirectAttributes rttr) throws Exception{
+		l.info("C: modifyPage 포스트 bno파라미터 : "+vo);
+		service.modify(vo);
+		rttr.addFlashAttribute("result", "up-ok");
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("pageSize", cri.getPageSize());
+		return "redirect:/board/listPage";
+	}
+	
 	
 	//글삭제
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -107,6 +135,21 @@ public class BoardController {
 		// 글삭제 후 얼럿창 -> 글목록으로 페이지 이동
 		rttr.addFlashAttribute("result", "delete-ok");
 		return "redirect:/board/listAll";
+	}
+	
+	//글삭제(incl Paging)
+	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	public String removePagePOST(Criteria cri, @RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception{
+		l.info("C: removePage 포스트");
+		// 글번호 저장
+		// 서비스객체 사용하여 글 삭제
+		service.remove(bno);
+		// 삭제정보 저장해서 이동
+		// 글삭제 후 얼럿창 -> 글목록으로 페이지 이동
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("pageSize", cri.getPageSize());
+		rttr.addFlashAttribute("result", "delete-ok");
+		return "redirect:/board/listPage";
 	}
 	
 	//페이징처리한 글목록
@@ -131,5 +174,7 @@ public class BoardController {
 		// 뷰페이지로 전달 
 		model.addAttribute("pm", pm);
 	}
+	
+	
 	
 }
