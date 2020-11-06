@@ -94,7 +94,7 @@ public class BoardController {
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void modifyGET(@RequestParam("bno") int bno, Model model) throws Exception{
 		l.info("C: modify 겟 메서드 파라미터 : "+bno);
-		model.addAttribute("bvo", service.readContent(bno));
+		model.addAttribute("bvo", service.readContent(bno));   
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
